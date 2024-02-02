@@ -7,7 +7,7 @@ function TopNav() {
   return (
     <Navbar fluid rounded>
       <Navbar.Brand href="#">
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Promise Restaurant</span>
+        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Savor Restaurant</span>
       </Navbar.Brand>
       <div className="flex md:order-2">
         <Dropdown
@@ -34,9 +34,9 @@ function TopNav() {
           Home
         </Navbar.Link>
         <Navbar.Link href="#">About</Navbar.Link>
-        <Navbar.Link href="#">Services</Navbar.Link>
-        <Navbar.Link href="#">Pricing</Navbar.Link>
-        <Navbar.Link href="#">Contact</Navbar.Link>
+        <Navbar.Link href="#">Reservation</Navbar.Link>
+        <Navbar.Link href="#">Gallery</Navbar.Link>
+        <Navbar.Link href="#">Contacts</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );
