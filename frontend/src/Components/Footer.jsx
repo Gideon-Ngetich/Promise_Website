@@ -12,9 +12,9 @@ import { FaInstagram } from "react-icons/fa";
 const Footer = () => {
     return (
         <>
-            <div className='flex py-10 px-20 items-start justify-between border-t-2 mt-10'>
-                <div className='w-96 h-full flex flex-col justify-center items-center '>
-                    <span className='flex justify-center items-center'>
+            <div className='flex py-10 px-20 items-start justify-between border-t-2 mt-10 overflow-hidden'>
+                <div className='w-96 h-full flex flex-col justify-center items-start  '>
+                    <span className='flex justify-center items-center pl-10'>
                         <h3 className='text-3xl font-bold text-white text-center'>Get in touch</h3>
                     </span>
                     <div className='flex h-full flex-col justify-start items-start'>
@@ -53,7 +53,7 @@ const Footer = () => {
                     <span>
                         <h3 className='text-3xl font-bold text-white'>Links</h3>
                     </span>
-                    <div className='flex flex-col justify-start items-start h-full'>
+                    <div className='flex flex-col justify-start items-center h-full'>
                         <p className='flex gap-3 justify-start items-center m-2 text-lg'>Home</p>
                         <p className='flex gap-3 justify-start items-center m-2 text-lg'>About</p>
                         <p className='flex gap-3 justify-start items-center m-2 text-lg'>Services</p>

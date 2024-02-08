@@ -5,7 +5,7 @@ import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 
 function TopNav() {
   return (
-    <Navbar fluid rounded>
+    <Navbar fluid rounded className='w-full'>
       <Navbar.Brand href="#">
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Savor Restaurant</span>
       </Navbar.Brand>

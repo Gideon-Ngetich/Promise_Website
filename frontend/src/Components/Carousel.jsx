@@ -6,7 +6,7 @@ function ImgCarousel() {
   return (
     <div className="relative h-screen">
       <div className="absolute top-1/2 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
-        <span className="sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold"><span style={{fontFamily: 'Courgette', fontSize: '60px'}}>Welcome to</span> <br></br> <span className='text-7xl'>Promise Restaurant</span> </span>
+        <span className="text-4xl lg:text-6xl font-bold"><span className='' style={{fontFamily: 'Courgette'}}>Welcome to</span> <br></br> <span className='text-6xl lg:text-7xl w-screen'>Promise Restaurant</span> </span>
       </div>
       <Carousel>
         <div className="h-full">
