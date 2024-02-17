@@ -2,7 +2,7 @@ import express from "express"
 import mongoose from 'mongoose'
 import cors from 'cors'
 import {PORT, mongoDBURL} from './Config.js'
-import { Reservation } from "./Models/Schema.js"
+import { Reservation, User } from "./Models/Schema.js"
 import bodyParser from "body-parser"
 
 const app = express();
@@ -65,4 +65,26 @@ app.get('/api/reserve-table', async (req, res) => {
         console.log(error.message);
         res.status(500).send({message: error.message});
     }
+})
+
+app.post('/api/User/Standard', async (req,res) => {
+  try{
+      if(!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.phoneNumber || !req.body.password){
+          return res.status(400).send({message: 'All fields required'});
+      }
+
+      const newReservation = new User({
+          firstName: req.body.firstName,
+          lastName:req.body.lastName,
+          email: req.body.email,
+          phoneNumber: req.body.phoneNumber,
+          password: req.body.password,         
+      })
+
+      await newReservation.save();
+      res.status(201).json({message: 'Reservaton successful'})
+  } catch(error){
+      console.log(error.message);
+      res.status(500).send({message: error.message});
+  }
 })
