@@ -6,6 +6,7 @@ import Menu from './Pages/Menu'
 import About from './Pages/About'
 import Reservation from './Pages/Reservation'
 import Contacts from './Pages/Contacts'
+import Signup from './Pages/Signup'
 
 function App() {
   
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path='/' Component={Home}/>
         <Route path='/login' Component={Login}/>
+        <Route path='/signup' Component={Signup}/>
         <Route path='/about' Component={About} />
         <Route path='/menu' Component={Menu}/>
         <Route path='/Reservation' Component={Reservation}/>

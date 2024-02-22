@@ -10,26 +10,19 @@ const Menu = () => {
 
   const [categories, setCategories] = useState([]);
   const [lunch, setLunch] = useState([]);
+  const [dinner, setDinner] = useState([])
 
-  useEffect(() => {
-    axios.get('http://localhost:5500/api/food?food-category=Lunch')
-      .then(
-        response => {
-          setFood(response.data)
-        }
-      )
-      .catch(error => {
-        console.log(err)
-      })
-  })
+
 
   useEffect(() => {
     axios.get('http://localhost:5500/api/food-category')
       .then(response => {
         const filteredCategories = response.data.filter(category => category.name !== 'Lunch');
         const lunchCategory = response.data.filter(category => category.name === 'Lunch');
+        const dinnerCategory = response.data.filter(category => category.name === 'Dinner')
         setCategories(filteredCategories);
         setLunch(lunchCategory)
+        setDinner(dinnerCategory);
       })
       .catch(error => {
         console.error('Error fetching categories:', error);
@@ -79,27 +72,29 @@ const Menu = () => {
         <p className='text-7xl font-extrabold text-white'>Lunch</p>
       </div>
 
-      <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 justify-between p-1 my-5 lg:p-7 xl:p-5 gap-10'>
+      <div className='p-1 my-5 lg:p-7 xl:p-7 gap-10'>
         {lunch.map(category => (
-          <span key={category._id}>
-            <span className='grid grid-cols-1 lg:grid-cols-2  gap-5'>
-              <span className='flex items-center justify-center'>
-                <img className='w-36 h-36 rounded-md' src={langingBackground} alt="" />
-              </span>
-              {category.foods.map(food => (
-                <span className='w-full'>
+          <span key={category._id} className='grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 xl:grid-cols-2 gap-10'>
+            {category.foods.map(food => (
+              <div className='flex flex-col justify-center items-center'>
+                <span className='flex flex-col lg:flex-row xl:flex-row gap-5'>
+                  <span className='flex items-center justify-center'>
+                    <img className='w-36 h-36 rounded-md' src={langingBackground} alt="" />
+                  </span>
                   <span className='flex justify-between items-center gap-4 w-full my-4 lg:w-3/4 xl:w-3/4 p-1 lg:p-0 xl:p-0'>
                     <span className='text-white text-lg'>{food.name}</span>
-                    <span>...........................................</span>
+                    <span>......................................</span>
                     <span className='text-white text-lg'>KSH {food.price}</span>
                   </span>
-                  <span className='flex justify-center items-center'>
-                    <button className='w-28 h-10 bg-yellow-500 text-black rounded-md hover:bg-yellow-600 ease-in duration-300'>Add To Cart</button>
-                  </span>
-                </span>
-              ))}
 
-            </span>
+                </span>
+                <span className='flex justify-center items-center'>
+                  <button className='w-28 h-10 bg-yellow-500 text-black rounded-md hover:bg-yellow-600 ease-in duration-300'>Add To Cart</button>
+                </span>
+              </div>
+
+
+            ))}
 
           </span>
         ))}
@@ -109,23 +104,32 @@ const Menu = () => {
         <p className='text-7xl font-extrabold text-white'>Dinner</p>
       </div>
 
-      <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 justify-between p-1 my-5 lg:p-7 xl:p-7 gap-10'>
-        <span>
-          <span className='flex flex-col justify-center items-center lg:flex-row xl:flex-row gap-5'>
-            <span className='flex items-center justify-center'>
-              <img className='w-36 h-36 rounded-md' src={langingBackground} alt="" />
-            </span>
-            <span className='flex justify-between items-center gap-5 w-full m-4 lg:w-3/4 xl:w-3/4 p-3 lg:p-0 xl:p-0'>
-              <span className='text-white text-xl'>Rice Beef</span>
-              <span>...........................................</span>
-              <span className='text-white text-xl'>KSH 130</span>
-            </span>
-          </span>
+      <div className='p-1 my-5 lg:p-7 xl:p-7 gap-10'>
+        {dinner.map(category => (
+          <span key={category._id} className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-10'>
+            {category.foods.map(food => (
+              <div className='flex flex-col justify-center items-center'>
+                <span className='flex flex-col lg:flex-row xl:flex-row gap-5'>
+                  <span className='flex items-center justify-center'>
+                    <img className='w-36 h-36 rounded-md' src={langingBackground} alt="" />
+                  </span>
+                  <span className='flex justify-between items-center gap-4 w-full my-4 lg:w-3/4 xl:w-3/4 p-1 lg:p-0 xl:p-0'>
+                    <span className='text-white text-lg'>{food.name}</span>
+                    <span>......................................</span>
+                    <span className='text-white text-lg'>KSH {food.price}</span>
+                  </span>
 
-          <span className='flex justify-center items-center'>
-            <button className='w-28 h-10 bg-yellow-500 text-black rounded-md hover:bg-yellow-600 ease-in duration-300'>Add To Cart</button>
+                </span>
+                <span className='flex justify-center items-center'>
+                  <button className='w-28 h-10 bg-yellow-500 text-black rounded-md hover:bg-yellow-600 ease-in duration-300'>Add To Cart</button>
+                </span>
+              </div>
+
+
+            ))}
+
           </span>
-        </span>
+        ))}
       </div>
 
 

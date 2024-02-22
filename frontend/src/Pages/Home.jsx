@@ -7,6 +7,7 @@ import axios from 'axios';
 import video from '../assets/video.mp4'
 import Footer from '../Components/Footer'
 import image1 from '../assets/image-1.jpg'
+import ReservationTable from '../Components/ReservationTable';
 
 
 const Home = () => {
@@ -198,47 +199,11 @@ const Home = () => {
             <div className='flex flex-col lg:flex-row xl:flex-row justify-center items-center gap-10 w-screen lg:p-10 bg-slate-600 overflow-hidden'>
                 <span className='w-full'>
                     <span className='flex flex-col justify-center items-center mb-10'>
-                        <h2 style={{ fontFamily: 'Courgette' }} className='text-5xl text-red-500'>Discover</h2>
+                        <h2 style={{ fontFamily: 'Courgette' }} className='text-5xl text-yellow-500'>Discover</h2>
                         <h1 className='text-4xl text-white font-bold tracking-2'>Book Table</h1>
                     </span>
-                    <span className=''>
-                        <form className='flex flex-col w-full lg:grid grid-cols-2 gap-5' action="">
-                            <span className='flex flex-col'>
-                                <label className='text-white' htmlFor="name">Name</label>
-                                <input className='p-2 w-80' id='name' type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                            </span>
-
-                            <span className='flex flex-col'>
-                                <label className='text-white' htmlFor="">Date</label>
-                                <input className='p-2 w-80' type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-                            </span>
-
-                            <span className='flex flex-col'>
-                                <label className='text-white' htmlFor="">Email</label>
-                                <input className='p-2 w-80' type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            </span>
-
-
-                            <span className='flex flex-col'>
-                                <label className='text-white' htmlFor="">People</label>
-                                <input className='p-2 w-80' type="number" value={people} onChange={(e) => setPeople(e.target.value)} />
-                            </span>
-
-                            <span className='flex flex-col'>
-                                <label className='text-white' htmlFor="">Time</label>
-                                <input className='p-2 w-80' type="time" value={time} onChange={(e) => setTime(e.target.value)} />
-                            </span>
-
-                            <span className='flex flex-col'>
-                                <label className='text-white' htmlFor="">Phone</label>
-                                <input className='p-2 w-80' type="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
-                            </span>
-
-                        </form>
-                        <span className='flex m-10 justify-center items-center'>
-                            <button onClick={handleBook} className='px-8 py-4 rounded-md text-white font-bold hover:bg-red-700 bg-red-600'>Book</button>
-                        </span>
-
+                    <span className='flex justify-center items-center py-10'>
+                        <ReservationTable />
                     </span>
                 </span>
                 <span className='flex justify-center items-center w-screen'>

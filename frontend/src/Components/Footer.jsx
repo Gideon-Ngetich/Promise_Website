@@ -12,7 +12,7 @@ import { FaInstagram } from "react-icons/fa";
 const Footer = () => {
     return (
         <>
-            <div className='flex py-10 px-20 items-start justify-between border-t-2 mt-10 overflow-hidden'>
+            <div className='flex flex-col lg:flex-row xl:flex-row py-10 px-10 items-start justify-between border-t-2 mt-10 w-screen overflow-hidden'>
                 <div className='w-96 h-full flex flex-col justify-center items-start  '>
                     <span className='flex justify-center items-center pl-10'>
                         <h3 className='text-3xl font-bold text-white text-center'>Get in touch</h3>

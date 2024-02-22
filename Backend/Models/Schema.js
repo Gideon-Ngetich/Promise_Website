@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from 'bcrypt'
 
 //Reservation Schema
 const reservationSchema = mongoose.Schema(
@@ -62,3 +63,33 @@ const foodSchema = new mongoose.Schema({
 })
 
 export const Food = mongoose.model('Food', foodSchema);
+
+const signupSchema = new mongoose.Schema({
+    userName: {
+        type: String,
+        required: [true, "Your name is required"]
+    },
+    email: {
+        type: String,
+        required: [true, "Your email address is required"]
+    },
+    phone: {
+        type: Number,
+        required: [true, "Your phone number is required"]
+    },
+    location: {
+        type: String,
+        required: [true, "Your location is requires"]
+    },
+    password: {
+        type: String,
+        required: [true, "Your password is required"]
+    },
+    createdAt: {
+        type: Date,
+        default: new Date()
+    }
+
+})
+
+export const User = mongoose.model('Users', signupSchema);
