@@ -17,7 +17,7 @@ const app = express();
 const JWT_SECRET_KEY = cryptoRandomString({length: 32, type: 'base64'});
 
 //middleware
-app.use(cors());
+app.use(cors({credentials:true, origin:'http://localhost:5173'}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
@@ -150,6 +150,8 @@ app.post('/api/users', async(req,res) => {
     }
 })
 
+
+
 app.post('/api/login', async (req,res) =>{
     try{
         const {email, password} = req.body;
@@ -162,12 +164,45 @@ app.post('/api/login', async (req,res) =>{
         if(!isValidPassword){
             return res.status(401).json({message: 'Invalid email or password'});
         }
-        const token = jwt.sign({userId: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1h'});
-        res.cookie('token', token, {httpOnly: true});
-        res.status(200).json({message: 'login successful', token})
+        const accessToken = jwt.sign({userId: user._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15m'});
+        const refreshToken = jwt.sign({}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'});
+        res.cookie('accessToken', accessToken, {httpOnly: true});
+        res.cookie('refreshToken', refreshToken, {httpOnly:true})
+        res.status(200).json({message: 'login successful'})
     } catch(error){
         res.status(500).json({message: "Error logging in"});
     }
+})
+
+const verifyToken = (req, res, next) => {
+    const accessToken = req.cookies.accessToken
+
+    if(!accessToken){
+        return res.status(403).json({message: 'Access token is missing'});
+    }
+    jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+        if(err){
+            return res.status(401).json({message: 'Invalid access token'});
+
+        }
+        req.userId = decoded.userId;
+        next()
+    })
+}
+
+app.post('/api/refreshToken', (req,res) =>{
+    const refreshToken = req.cookies.refreshToken;
+
+    if(!refreshToken){
+        return res.status(403).json({message: 'Refresh token is missing'})
+    }
+
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) =>{
+        if(err){
+            return res.status(403).json({message: 'Invalid refresh token'});
+        }
+    })
+
 })
 
 // app.post('/api/login', async function(req,res){

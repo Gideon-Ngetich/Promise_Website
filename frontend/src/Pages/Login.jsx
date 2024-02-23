@@ -29,7 +29,7 @@ const Login = () => {
     e.preventDefault();
 
     try{
-      const response = await axios.post('http://localhost:5500/api/login', {email, password});
+      const response = await axios.post('http://localhost:5500/api/login', {email, password}, {withCredentials:true});
       console.log("Login successful");
       console.log(response.data);
 
