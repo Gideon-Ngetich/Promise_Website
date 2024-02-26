@@ -1,7 +1,17 @@
 import {React, useEffect, useState} from 'react'
 import axios from 'axios'
+import Loader from '../Components/Loader';
 
 const Menu = () => {
+
+  const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 3300)
+    }, [])
+    if(loading){
+       return <Loader />
+    }
 
   const [reservations, setReservations] = useState([]);
 

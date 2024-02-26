@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import TopNav from '../Components/Navbar'
 import ImgCarousel from '../Components/Carousel'
 import CustomerReview from '../Components/CustomerReview'
@@ -6,30 +6,29 @@ import { MdOutlineArrowRightAlt } from "react-icons/md";
 import axios from 'axios';
 import video from '../assets/video.mp4'
 import Footer from '../Components/Footer'
-import image1 from '../assets/image-1.jpg'
+import image6 from '../assets/image-6.jpg'
+import image7 from '../assets/image-7.jpg'
+import image8 from '../assets/image-8.jpg'
+import image9 from '../assets/image-9.jpg'
+import image10 from '../assets/image-10.jpg'
+import image11 from '../assets/image-11.jpg'
+import video1 from '../assets/video-1.mp4'
 import ReservationTable from '../Components/ReservationTable';
+import Loader from '../Components/Loader'
 
 
 const Home = () => {
 
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-    const [people, setPeople] = useState('');
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
+    const [loading, setLoading] = useState(true);
 
-    const handleBook = async () => {
-        try {
-            await axios.post('http://localhost:5500/api/reserve-table', { name, email, phone, people, date, time })
-            console.log('Reservation successful');
-        } catch (err) {
-            console.log(err);
-        }
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 3300)
+    }, [])
+    if (loading) {
+        return <Loader />
     }
 
-    const bgImageURL = 'https://image-tc.galaxy.tf/wijpeg-9vualzt3dbue0hi00ba4q49ub/chatwalhotelnyc-c-004-build-crop.jpg?width=1920';
-
+    const bgImgURL = 'https://cdn-jfbij.nitrocdn.com/dqNqJXflBdWeKBEcxejIfJBoyWdMBCQM/assets/images/optimized/rev-9ed14d9/totalfood.com/wp-content/uploads/2013/07/restaurant-floor-plan-design-2.jpg'
     const gridImg1 = 'https://rakskitchen.net/wp-content/uploads/2013/11/10867983783_854a7fec8f_o.jpg'
     const gridImg2 = 'https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
     const gridImg3 = 'https://cdn.shopify.com/s/files/1/0108/5757/8558/files/Fizzy_Drinks_impact_on_skin_1024x1024.png?v=1614167247'
@@ -41,10 +40,11 @@ const Home = () => {
 
     return (
         <>
+            {/* <Loader /> */}
             <TopNav />
             <ImgCarousel />
 
-            <div className='flex flex-col gap-10 justify-center items-center lg:flex-row mx-5 my-10'>
+            <div className='flex flex-col gap-10 justify-center items-center lg:flex-row mx-5 my-10 overflow-hidden'>
                 <div className='flex flex-col w-full lg:w-1/2 justify-center items-center md:items-center'>
                     <p className='w-full text-center text-3xl lg:text-5xl text-yellow-500' style={{ fontFamily: 'satisfy' }}>African Restaurant</p>
                     <h1 className='text-white' style={{ fontFamily: 'oswald', fontSize: '50px' }}>WELCOME</h1>
@@ -61,15 +61,15 @@ const Home = () => {
                 </div>
             </div>
 
-            <div style={{ backgroundImage: `url(${bgImageURL})` }} className='flex flex-col justify-center items-center w-full md:w-96 h-72 bg-blue-600 overflow-hidden'>
+            <div style={{ backgroundImage: `url(${image6})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} className='flex flex-col justify-center items-center w-full  h-96 bg-blue-600 overflow-hidden'>
                 <span style={{ fontFamily: 'Courgette', fontSize: '40px' }} className='text-white'>Discover</span>
-                <span style={{ fontWeight: '800' }} className='text-3xl text-white'>PROMISE RESTAURANT</span>
+                <span style={{ fontWeight: '800' }} className='text-3xl text-white'>SAVOR RESTAURANT</span>
             </div>
 
-            <div className='flex flex-col lg:flex-row md:flex-col gap-8 my-10 mx-5 lg:m-20 xl:m-20'>
+            <div className='flex flex-col lg:flex-row md:flex-col gap-8 my-10 mx-5 lg:m-20 xl:m-20 overflow-hidden'>
                 <div>
                     <span className='flex justify-center items-center'>
-                        <img className='w-full h-60 rounded-md md:w-3/4 lg:h-52 lg:w-full' src="https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg" alt="" />
+                        <img className='w-full h-60 rounded-md md:w-3/4 lg:h-52 lg:w-full' src={image6} alt="" />
                     </span>
                     <span>
                         <span>
@@ -86,9 +86,9 @@ const Home = () => {
                 </div>
 
 
-                <div>
+                <div className='overflow-hidden'>
                     <span className='flex justify-center items-center'>
-                        <img className='w-screen h-60 rounded-md md:w-3/4 lg:h-52 lg:w-full' src="https://www.ndtv.com/cooks/images/fried%20ribs-620.jpg" alt="" />
+                        <img className='w-screen h-60 rounded-md md:w-3/4 lg:h-52 lg:w-full' src={image11} alt="" />
                     </span>
                     <span>
                         <span>
@@ -106,7 +106,7 @@ const Home = () => {
 
                 <div>
                     <span className='flex justify-center items-center'>
-                        <img className='w-screen h-60 rounded-md md:w-3/4 lg:h-52 lg:w-full' src="https://img.freepik.com/free-photo/top-view-pepperoni-pizza-with-mushroom-sausages-bell-pepper-olive-corn-black-wooden_141793-2158.jpg" alt="" />
+                        <img className='w-screen h-60 rounded-md md:w-3/4 lg:h-52 lg:w-full' src={image10} alt="" />
                     </span>
                     <span>
                         <span>
@@ -126,69 +126,39 @@ const Home = () => {
 
             </div >
 
-            {/* <div>
-
-
-                <div className="xl:grid lg:grid md:grid grid-cols-3 grid-rows-2 flex flex-col gap-4 lg:m-10 m-0 p-5 overflow-hidden h-full">
-                    <div className='row-span-2 overflow-hidden'>
-                        <div className="flex justify-center items-center hover:scale-110 h-full bg-no-repeat ease-out duration-500" style={{ backgroundImage: `url(${gridImg1})` }}>
-                            <a className=' bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-yellow-500' href="">LUNCH</a>
-                        </div>
-                    </div>
-
-                    <div className='row-span-2 overflow-hidden'>
-                        <div className="flex justify-center items-center hover:scale-110 h-full bg-no-repeat ease-out duration-500" style={{ backgroundImage: `url(${gridImg2})` }}>
-                            <a className=' bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-yellow-500' href="">DRINKS</a>
-                        </div>
-                    </div>
-                    <div className='overflow-hidden'>
-                        <div className="flex justify-center items-center hover:scale-110 h-full bg-no-repeat ease-out duration-500" style={{ backgroundImage: `url(${gridImg3})` }}>
-                            <a className=' bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-yellow-500' href="">LUNCH</a>
-                        </div>
-                    </div>
-                    <div className="col-span-2 col-start-1 row-start-3 overflow-hidden">
-                        <div className="flex justify-center items-center hover:scale-110 h-full bg-no-repeat ease-out duration-500" style={{ backgroundImage: `url(${gridImg4})` }}>
-                            <a className=' bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-yellow-500' href="">LUNCH</a>
-                        </div>
-                    </div>
-                    <div className="col-start-3 row-start-3 overflow-hidden">
-                        <div className="flex justify-center items-center hover:scale-110 h-full bg-no-repeat ease-out duration-500" style={{ backgroundImage: `url(${gridImg5})` }}>
-                            <a className=' bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-yellow-500' href="">LUNCH</a>
-                        </div>
-                    </div>
-                    <div className="col-start-3 row-start-2 overflow-hidden">
-                        <div className="flex justify-center items-center hover:scale-110 h-full bg-no-repeat ease-out duration-500" style={{ backgroundImage: `url(${gridImg6})` }}>
-                            <a className=' bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-yellow-500' href="">LUNCH</a>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
             < div >
-                <div className="grid grid-cols-3 grid-rows-2 gap-4 m-10">
-                    <div className="row-span-2 overflow-hidden">
-                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src="https://rakskitchen.net/wp-content/uploads/2013/11/10867983783_854a7fec8f_o.jpg" alt="" />
-                        <a className='relative -top-1/2 left-1/4 bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="">LUNCH</a>
+                <div className="flex flex-col lg:grid grid-cols-3 grid-rows-2 gap-4 m-10 overflow-hidden">
+                    <div className="row-span-2 overflow-hidden flex justify-center items-center relative">
+                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src={image8} alt="" />
+                        <a className='absolute bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="" style={{ zIndex: 10 }}>LUNCH</a>
+
                     </div>
-                    <div className="row-span-2 overflow-hidden">
-                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src="https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" />
-                        <a className='relative -top-1/2 left-1/4 bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="">DRINKS</a>
+                    <div className="row-span-2 overflow-hidden flex justify-center items-center relative">
+                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src='https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' alt="" />
+                        <a className='absolute bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="" style={{ zIndex: 10 }}>FRESH JUICE</a>
                     </div>
-                    <div className='overflow-hidden'>
-                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src="https://cdn.shopify.com/s/files/1/0108/5757/8558/files/Fizzy_Drinks_impact_on_skin_1024x1024.png?v=1614167247" alt="" />
-                        <a className='relative -top-1/2 left-1/4 bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="">HAPPY HOUR</a>
+
+
+                    <div className="overflow-hidden flex justify-center items-center relative">
+                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src='https://www.bigbasket.com/media/uploads/recipe/w-l/2663_1_1.jpg' alt="" />
+                        <a className='absolute bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="" style={{ zIndex: 10 }}>HOT DRINKS</a>
                     </div>
-                    <div className="col-span-2 col-start-1 row-start-3 overflow-hidden">
-                        <img className='h-80 w-full transform transition-transform duration-500 hover:scale-110' src="https://media.istockphoto.com/id/868408746/photo/assorted-indian-dish.jpg?s=612x612&w=0&k=20&c=XLsAk571Z2kEe_x6TnXWSzsG95-2agp-TcYswQrKHuo=" alt="" />
-                        <a className='relative -top-1/2 left-1/2 bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="">DINNER</a>
+
+                    <div className="col-span-2 col-start-1 row-start-3 overflow-hidden flex justify-center items-center relative">
+                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src='https://media.istockphoto.com/id/868408746/photo/assorted-indian-dish.jpg?s=612x612&w=0&k=20&c=XLsAk571Z2kEe_x6TnXWSzsG95-2agp-TcYswQrKHuo=' alt="" />
+                        <a className='absolute bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="" style={{ zIndex: 10 }}>DINNER</a>
                     </div>
-                    <div className="col-start-3 row-start-3 overflow-hidden">
-                        <img className='h-80 w-full transform transition-transform duration-500 hover:scale-110' src="https://i.pinimg.com/736x/f0/4f/51/f04f51de57631fd10a51eb7ceaa18cb9.jpg" alt="" />
-                        <a className='relative -top-1/2 left-1/4 bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="">STARTER</a>
+
+                    <div className="col-start-3 row-start-3 overflow-hidden flex justify-center items-center relative">
+                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src='https://images.herzindagi.info/image/2020/Jun/chocolate-parle-g-ice-cream.jpg' alt="" />
+                        <a className='absolute bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="" style={{ zIndex: 10 }}>ICE CREAM</a>
                     </div>
-                    <div className="col-start-3 row-start-2 overflow-hidden">
-                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src="https://t3.ftcdn.net/jpg/01/76/33/14/360_F_176331484_nLHY9EoW0ETwPZaS9OBXPGbCJhT70GZe.jpg" alt="" />
-                        <a className='relative -top-1/2 left-1/4 bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="">DESSERT</a>
+
+                    <div className="col-start-3 row-start-2 overflow-hidden flex justify-center items-center relative">
+                        <img className='h-full w-full transform transition-transform duration-500 hover:scale-110' src={image10} alt="" />
+                        <a className='absolute bg-gray-200 p-5 text-black text-xl font-semibold rounded-md transition-transform duration-1000 ease-in-out hover:bg-red-600' href="" style={{ zIndex: 10 }}>FRIED PIZZA</a>
                     </div>
+
                 </div>
             </div >
 
@@ -206,7 +176,7 @@ const Home = () => {
                         <ReservationTable />
                     </span>
                 </span>
-                <span className='flex justify-center items-center w-screen'>
+                <span className='flex justify-center items-center'>
                     <img className='w-full h-full rounded-md' src="https://www.yummytoddlerfood.com/wp-content/uploads/2022/04/Homemade-Lunch-1-horiz.jpg" alt="" />
                 </span>
 
@@ -214,8 +184,8 @@ const Home = () => {
             </div>
 
             <div>
-                <span className='flex flex-col justify-center items-center mt-10 mb-5'>
-                    <h2 style={{ fontFamily: 'Courgette' }} className='text-5xl text-red-500'>Customers Say</h2>
+                <span className='flex flex-col justify-center items-center mt-10 mb-5 overflow-hidden'>
+                    <h2 style={{ fontFamily: 'Courgette' }} className='text-5xl text-yellow-500'>Customers Say</h2>
                     <h1 className='text-4xl text-white font-bold tracking-2'>REVIEW</h1>
                 </span>
                 <span>
@@ -223,13 +193,13 @@ const Home = () => {
                 </span>
             </div>
 
-            <div className='h-auto'>
+            <div className='h-auto overflow-hidden'>
                 <span className='flex flex-col justify-center items-center mt-10 mb-5'>
-                    <h2 style={{ fontFamily: 'Courgette' }} className='text-5xl text-red-500'>Discover</h2>
+                    <h2 style={{ fontFamily: 'Courgette' }} className='text-5xl text-yellow-500'>Savor</h2>
                     <h1 className='text-4xl text-white font-bold tracking-2'>OUR VIDEO</h1>
                 </span>
-                <span className='w-full h-full flex justify-center'>
-                    <iframe width="100" height="500" src="https://www.youtube.com/embed/DoQT5i9Iz84?si=uCXKzaBChUEuioeo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; web-share" allowfullscreen></iframe>
+                <span className='w-full h-full lg:h-[800px]  flex justify-center overflow-hidden'>
+                    <video src={video1} controls ></video>
                 </span>
             </div>
 

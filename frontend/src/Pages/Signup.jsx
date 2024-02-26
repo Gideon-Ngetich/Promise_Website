@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { AiFillTwitterCircle, AiFillInstagram, AiFillFacebook } from "react-icons/ai";
+import validator from 'validator';
+import Loader from "../Components/Loader";
+import { useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -10,14 +14,24 @@ const Signup = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordMatch, setPasswordMatch] = useState(true);
     const [userName, setUsername] = useState('');
-    const [email, setEmail] = useState('');
     const [location, setLocation] = useState('');
     const [phone, setPhone] = useState('')
+    const [email, setEmail] = useState('');
+    const { enqueueSnackbar } = useSnackbar();
+    const [loading, setLoading] = useState(true);
+    const history = useNavigate()
+
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 3300)
+    }, [])
+    if (loading) {
+        return <Loader />
+    }
 
 
-//    const handleLocationChange = (event) => {
-//         setLocation(event.target.value);
-//     }
+    //    const handleLocationChange = (event) => {
+    //         setLocation(event.target.value);
+    //     }
 
     const handleChange = event => {
         setLocation(event.target.value);
@@ -49,17 +63,32 @@ const Signup = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
-            if(password !== confirmPassword){
+            if (password !== confirmPassword) {
                 setPasswordMatch(false);
+                enqueueSnackbar('Passwords do not match', { variant: 'error' });
                 return;
             }
-            setPasswordMatch(true);
-            await axios.post('http://localhost:5500/api/users', { userName, email, phone, location ,password});
-            console.log('Account successfully created');
-        } catch (error) {
-            console.log(error);
+
+            const response = await axios.post('http://localhost:5500/api/users', { userName, email, phone, location, password });
+
+            if (!response.ok) {
+                const data = await response.json();
+                console.log(response.code)
+                if (response.code === "ERR_BAD_REQUEST") {
+                    enqueueSnackbar('User already exist', { variant: 'error' });
+                } else {
+                    enqueueSnackbar('Error Creating User');
+                }
+            } else {
+                console.log('Account successfully created');
+                enqueueSnackbar('Signup Successful', { variant: 'success' })
+                history('/login')
+            }
+        } catch(err) {
+            console.log({message: err})
         }
-    }
+    };
+
 
     return (
         <div className="flex flex-col md:flex-row items-center min-h-screen lg:flex-row xl:flex-row flex-1 justify-center w-full lg:bg-cover sm:h-screen"  >
@@ -95,10 +124,10 @@ const Signup = () => {
                             <input
                                 type="email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)} 
+                                onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Email Address"
                                 className="bg-white text-black p-2 rounded-md w-full border border-gray-300 mb-4"
-                                required
+                                require
                             />
                             <input
                                 type="tel"
@@ -111,7 +140,7 @@ const Signup = () => {
                             <select name="" value={location} onChange={handleChange} className="bg-white text-black w-full p-2 mb-4 border border-gray-300 rounded-md">
                                 <option value="Kabarak">Kabarak</option>
                                 <option value="Chapchap">ChapChap</option>
-                                <option value="OBT">OBT</option> 
+                                <option value="OBT">OBT</option>
                                 <option value="Baraka Shop">Baraka Shop</option>
                                 <option value="Elevate">Elevate</option>
                                 <option value="Stage One">Stage One</option>
@@ -121,7 +150,6 @@ const Signup = () => {
                             <div className="border border-gray-300 text-black rounded-md w-full relative mb-4">
                                 <input
                                     type={showPassword ? "text" : "password"}
-                                    id="password"
                                     name="password"
                                     value={password}
                                     onChange={handlePasswordChange}
@@ -139,7 +167,6 @@ const Signup = () => {
                             <div className="border border-gray-300 text-black rounded-md w-full relative mb-4">
                                 <input
                                     type={showConfirmPassword ? "text" : "password"}
-                                    id="password"
                                     name="password"
                                     value={confirmPassword}
                                     onChange={handleConfirmPasswordChange}

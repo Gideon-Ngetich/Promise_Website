@@ -12,60 +12,56 @@ import { FaInstagram } from "react-icons/fa";
 const Footer = () => {
     return (
         <>
-            <div className='flex flex-col lg:flex-row xl:flex-row py-10 px-10 items-start justify-between border-t-2 mt-10 w-screen overflow-hidden'>
-                <div className='w-96 h-full flex flex-col justify-center items-start  '>
-                    <span className='flex justify-center items-center pl-10'>
-                        <h3 className='text-3xl font-bold text-white text-center'>Get in touch</h3>
+            <div className='flex flex-col justify-center items-center lg:flex-row lg:justify-around lg:items-start border-t-2 p-5 lg:p-10 mt-10 bg-blue-400 bg-opacity-10'>
+                <div className='border-none lg:border-r-2 p-5 lg:p-10 justify-center items-center'>
+                    <h1 className='text-2xl text-white font-bold text-center lg:text-left'>Contact Us</h1>
+                    <span className='flex justify-center lg:justify-start items-center gap-2 text-xl m-5'>
+                        <CiLocationOn />
+                        <p>Near Kabarak University</p>
                     </span>
-                    <div className='flex h-full flex-col justify-start items-start'>
-
-
-                        <p className='flex gap-3 justify-center items-center m-3 text-lg'><CiLocationOn className='text-3xl' /> 1234 Street Name, City Name, United States</p>
-                        <p className='flex gap-3 justify-center items-center m-3 text-lg'><FaPhoneAlt className='text-2xl' /> +1234567890</p>
-                        <p className='flex gap-3 justify-center items-center m-3 text-lg'><CiMail className='text-2xl' />savor@restaurant.com</p>
-                    </div>
+                    <span className='flex justify-start items-center gap-2 text-xl m-5'>
+                        <FaPhoneAlt />
+                        <p>+254 785 020 603</p>
+                    </span>
+                    <span className='flex justify-start items-center gap-2 text-xl m-5'>
+                        <CiMail />
+                        <p>savor@restaurant.com</p>
+                    </span>
                 </div>
-                <div className='w-96 h-full flex flex-col justify-center items-center '>
-
-                    <span className='flex justify-center items-center'>
-                        <h3 className='text-3xl font-bold text-white'>Opening hours</h3>
-                    </span>
-                    <div className='flex flex-col justify-start items-center '>
-                        <p className='flex gap-3 justify-start items-center m-3 text-lg'>Monday - Friday: 8am - 8pm</p>
-                        <p className='flex gap-3 justify-start items-center m-3 text-lg'>Saturday: 9am - 7pm</p>
-                        <p className='flex gap-3 justify-start items-center m-3 text-lg'>Sunday: 9am - 8pm</p>
+                <div className='py-5 lg:py-10 justify-start'>
+                    <div>
+                        <h1 className='text-2xl text-white font-bold text-center lg:text-left'>Opening Hours</h1>
+                        <p className='text-xl m-5'>7.00AM - 10PM <br /> Everyday</p>
                     </div>
 
                 </div>
-
-                <div className='w-96 flex flex-col justify-center items-center h-full'>
-                    <span className='flex justify-center items-center'>
-                        <h3 className='text-3xl font-bold text-white'>Follow</h3>
-                    </span>
-                    <div className='flex flex-col justify-start items-start'>
-                        <p className='flex gap-3 justify-start items-center m-3 text-lg'><FaFacebook /> Facebook</p>
-                        <p className='flex gap-3 justify-start items-center m-3 text-lg'><FaTwitter />Twitter</p>
-                        <p className='flex gap-3 justify-start items-center m-3 text-lg'><FaInstagram />Instagram</p>
-                    </div>
-
-                </div>
-                <div className='w-96 flex flex-col justify-center items-center'>
-                    <span>
-                        <h3 className='text-3xl font-bold text-white'>Links</h3>
-                    </span>
-                    <div className='flex flex-col justify-start items-center h-full'>
-                        <p className='flex gap-3 justify-start items-center m-2 text-lg'>Home</p>
-                        <p className='flex gap-3 justify-start items-center m-2 text-lg'>About</p>
-                        <p className='flex gap-3 justify-start items-center m-2 text-lg'>Services</p>
-                        <p className='flex gap-3 justify-start items-center m-2 text-lg'>Projects</p>
-                        <p className='flex gap-3 justify-start items-center m-2 text-lg'>Contact</p>
-                    </div>
+                <div className='border-none lg:border-l-2 h-full p-5 lg:p-10'>
+                    <h1 className='text-2xl text-white font-bold text-center lg:text-left'>Follow Us</h1>
+                    <a href="" target='_blank'>
+                        <span className='flex justify-start items-center gap-2 text-xl m-5  hover:text-blue-500 ease-in duration-300'>
+                            <FaFacebook className='text-blue-600' />
+                            <p>Facebook</p>
+                        </span>
+                    </a>
+                    <a href="https://www.instagram.com/savor.restaurant?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target='_blank'>
+                        <span className='flex justify-start items-center gap-2 text-xl m-5  hover:text-pink-400 ease-in duration-300'>
+                            <FaInstagram className='text-pink-500' />
+                            <p>Instagram</p>
+                        </span>
+                    </a>
+                    <a href="" target='_blank'>
+                        <span className='flex justify-start items-center gap-2 text-xl m-5 hover:text-blue-500 ease-in duration-300'>
+                            <FaTwitter className='text-blue-400' />
+                            <p>Twitter</p>
+                        </span>
+                    </a>
 
                 </div>
             </div>
             <div>
-                <div className='flex justify-center items-center bg-black p-5'>
+                <div className='flex flex-col lg:flex-row justify-center items-center bg-black p-5 gap-2 lg:gap-5'>
                     <p className='text-white text-lg'>© 2021 Savor Restaurant. All rights reserved.</p>
+                    <p className='float-right'><a href="">Superme Developers</a></p>
                 </div>
             </div>
 

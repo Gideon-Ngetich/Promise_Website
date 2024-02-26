@@ -4,11 +4,11 @@ import { Carousel } from 'flowbite-react';
 
 function ImgCarousel() {
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen overflow-hidden">
       <div className="absolute top-1/2 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
-        <span className="text-4xl lg:text-6xl font-bold"><span className='' style={{fontFamily: 'Courgette'}}>Welcome to</span> <br></br> <span className='text-6xl lg:text-7xl w-screen'>Promise Restaurant</span> </span>
+        <span className="text-4xl lg:text-6xl font-bold"><span className='' style={{fontFamily: 'Courgette'}}>Welcome to</span> <br></br> <span className='text-6xl lg:text-7xl w-screen'>Savor Restaurant</span> </span>
       </div>
-      <Carousel>
+      <Carousel className='w-screen'>
         <div className="h-full">
           <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2022/08/19/WU3203-ree-drummond-crispy-everything-chicken-cutlets_4x3.jpg.rend.hgtvcom.1280.960.suffix/1660928170362.jpeg" alt="Slide 1" className="w-full h-full object-cover" />
         </div>
@@ -20,6 +20,7 @@ function ImgCarousel() {
         </div>
       </Carousel>
     </div>
+    
   );
 }
 

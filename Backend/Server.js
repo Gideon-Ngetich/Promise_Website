@@ -11,10 +11,12 @@ import authRoute from "./Routes/auth.js"
 import cryptoRandomString from 'crypto-random-string'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
+import WebSocket from "ws"
 
 
 const app = express();
 const JWT_SECRET_KEY = cryptoRandomString({length: 32, type: 'base64'});
+// const wss = new WebSocket.Server({server})
 
 //middleware
 app.use(cors({credentials:true, origin:'http://localhost:5173'}));
@@ -137,6 +139,7 @@ app.post('/api/users', async(req,res) => {
         const {userName,email,phone,location,password} = req.body;
         const existingUser = await User.findOne({email})
        if(existingUser){
+            
             return res.status(409).json({message: 'User already exists'});
        }
 
@@ -204,6 +207,10 @@ app.post('/api/refreshToken', (req,res) =>{
     })
 
 })
+
+app.get('/api/protected', verifyToken, (req, res) => {
+    res.json({ message: 'Access granted', userId: req.userId });
+});
 
 // app.post('/api/login', async function(req,res){
 //     try{

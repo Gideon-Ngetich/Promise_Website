@@ -1,12 +1,21 @@
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 import TopNav from '../Components/Navbar'
 import bgImage from '../assets/image-1.jpg'
 import MapView from '../Components/Map.jsx'
 import Footer from '../Components/Footer.jsx'
+import Loader from '../Components/Loader.jsx'
 
 const Contacts = () => {
   const langingBackground = bgImage;
 
+  const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 3300)
+    }, [])
+    if(loading){
+       return <Loader />
+    }
 
   return (
     <>

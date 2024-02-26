@@ -3,6 +3,7 @@
 
 import { Avatar, Dropdown, Navbar } from 'flowbite-react';
 
+
 function TopNav() {
   return (
     <Navbar fluid rounded className='w-full'>
@@ -30,13 +31,13 @@ function TopNav() {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link href="#" active>
+        <Navbar.Link href="/">
           Home
         </Navbar.Link>
-        <Navbar.Link href="#">About</Navbar.Link>
-        <Navbar.Link href="#">Reservation</Navbar.Link>
-        <Navbar.Link href="#">Gallery</Navbar.Link>
-        <Navbar.Link href="#">Contacts</Navbar.Link>
+        <Navbar.Link href="/about">About</Navbar.Link>
+        <Navbar.Link href="/reservation">Reservation</Navbar.Link>
+        <Navbar.Link href="/gallery">Gallery</Navbar.Link>
+        <Navbar.Link href="/contacts">Contacts</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

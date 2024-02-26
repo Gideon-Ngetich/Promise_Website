@@ -18,8 +18,8 @@ function App() {
         <Route path='/signup' Component={Signup}/>
         <Route path='/about' Component={About} />
         <Route path='/menu' Component={Menu}/>
-        <Route path='/Reservation' Component={Reservation}/>
-        <Route path='/Contacts' Component={Contacts}/>
+        <Route path='/reservation' Component={Reservation}/>
+        <Route path='/contacts' Component={Contacts}/>
       </Routes>
     </>
   )

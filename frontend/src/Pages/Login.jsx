@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import {React, useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 import "tailwindcss/tailwind.css";
@@ -8,12 +8,17 @@ import {
   AiFillInstagram,
   AiFillFacebook,
 } from "react-icons/ai";
+import Loader from "../Components/Loader";
+import { useSnackbar } from "notistack";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigateTo = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const {enqueueSnackbar} = useSnackbar();
 
   const handleEmailChange = (e) =>{
     setEmail(e.target.value);
@@ -25,12 +30,20 @@ const Login = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 3300)
+    }, [])
+    if(loading){
+       return <Loader />
+    }
+
   const handleSubmit = async (e) =>{
     e.preventDefault();
 
     try{
       const response = await axios.post('http://localhost:5500/api/login', {email, password}, {withCredentials:true});
       console.log("Login successful");
+      enqueueSnackbar('Login Successful', {variant: 'success'})
       console.log(response.data);
 
       const token = response.data.token;
@@ -41,6 +54,7 @@ const Login = () => {
 
     } catch (error){
       console.log({message: error})
+      enqueueSnackbar('Error loging in', {variant: 'error'})
     }
   }
 

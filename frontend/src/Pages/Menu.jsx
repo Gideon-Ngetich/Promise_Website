@@ -4,6 +4,7 @@ import bgImage from '../assets/image-1.jpg'
 import Footer from '../Components/Footer.jsx'
 import { FaCartPlus } from "react-icons/fa";
 import axios from 'axios'
+import Loader from '../Components/Loader.jsx';
 
 
 const Menu = () => {
@@ -12,6 +13,14 @@ const Menu = () => {
   const [lunch, setLunch] = useState([]);
   const [dinner, setDinner] = useState([])
 
+  const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => setLoading(false), 3300)
+    }, [])
+    if(loading){
+       return <Loader />
+    }
 
 
   useEffect(() => {

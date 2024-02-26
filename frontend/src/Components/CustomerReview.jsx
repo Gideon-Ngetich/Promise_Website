@@ -8,7 +8,7 @@ function CustomerReview() {
     return (
         <div className="w-full h-96 ">
             <Carousel>
-                <span className='w-full h-full'>
+                <span className='w-full h-full overflow-hidden'>
                     <span className='w-full flex justify-center m-5'>
                         <img className='w-28 h-28 rounded-full border-4 border-red-500' src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="" />
                     </span>

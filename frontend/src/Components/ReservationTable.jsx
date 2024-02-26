@@ -1,4 +1,5 @@
 import {React, useState} from 'react'
+import {useSnackbar} from 'notistack'
 
 const ReservationTable = () => {
 
@@ -8,20 +9,23 @@ const ReservationTable = () => {
   const [people, setPeople] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const {enqueSnackbar} = useSnackbar();
 
   const handleBook = async () => {
     try {
       await axios.post('http://localhost:5500/api/reserve-table', { name, email, phone, people, date, time })
       console.log('Reservation successful');
+      enqueSnackbar('Reservation Successful', {variant: 'success'});
     } catch (err) {
       console.log(err);
+      enqueSnackbar('Submission Failed', {variant: 'error'});
     }
   }
 
   return (
     <>
-      <span>
-          <form className='flex flex-col w-full lg:grid grid-cols-2 gap-5' action="">
+      <span className=''>
+          <form className='flex flex-col w-full lg:grid gap-5 grid-cols-2' action="">
             <span className='flex flex-col'>
               <label className='text-white' htmlFor="name">Name</label>
               <input className='p-2 w-80' id='name' type="text" value={name} onChange={(e) => setName(e.target.value)} />
