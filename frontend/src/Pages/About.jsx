@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const About = () => {
-  return (
-    <div>About</div>
-    
-  )
-}
-
-export default About
-=======
 import React, { useEffect, useRef, useState } from "react";
 import "./styles.css"; // Import Tailwind CSS styles
 import VideoComponent from "./VideoComponent"; // Import your video component
@@ -92,31 +80,37 @@ const App = () => {
           </p>
         </div>
 
-        <div className="h-96 my-10 mx-5 w-full bg-slate-500">
-          <video ref={videoRef}></video>
+        <div className="h-96 my-10 mx-5 w-full bg-slate-500 relative">
+          <video ref={videoRef} className="absolute inset-0 w-full h-full object-cover"></video>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="flex justify-center items-center">
-            <img className="w-80 md:w-96 lg:w-104 xl:w-120 h-80 md:h-96 lg:h-104 xl:h-120 rounded-md" src={bgImg} alt="Delicious"/>
-            <div className="flex flex-col justify-center items-center text-center md:pl-5 lg:pl-0 xl:pl-0">
-              <span style={{ fontFamily: 'satisfy' }} className="text-yellow-500 text-3xl md:text-4xl lg:text-5xl xl:text-6xl ">Delicious</span>
-              <span style={{ fontFamily: 'oswald' }} className="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl">Recipes</span>
-              <p className="text-gray-300 text-sm md:text-base lg:text-lg xl:text-xl mt-2 md:mt-5 lg:mt-7 xl:mt-10">
-                Fusce iaculis, quam quis volutpat cursus, tellus quam varius eros, in euismod lorem nisl in ante. Maecenas imperdiet vulputate dui sit amet vestibulum. Nulla quis suscipit nisl.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col justify-center items-center md:items-start lg:items-start xl:items-start">
-            <img className="w-80 md:w-96 lg:w-104 xl:w-120 h-80 md:h-96 lg:h-104 xl:h-120 rounded-md" src={bgImg} alt="Romantic"/>
-            <div className="flex flex-col justify-center items-center text-center md:pr-5 lg:pr-0 xl:pr-0 md:text-left lg:text-left xl:text-left md:pl-0 lg:pl-0 xl:pl-0">
-              <span style={{ fontFamily: 'satisfy' }} className="text-yellow-500 text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Romantic</span>
-              <span style={{ fontFamily: 'oswald' }} className="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl">Restaurant</span>
-              <p className="text-gray-300 text-sm md:text-base lg:text-lg xl:text-xl mt-2 md:mt-5 lg:mt-7 xl:mt-10">
-                Fusce iaculis, quam quis volutpat cursus, tellus quam varius eros, in euismod lorem nisl in ante. Maecenas imperdiet vulputate dui sit amet vestibulum. Nulla quis suscipit nisl.
-              </p>
-            </div>
-          </div>
+       <div ref={bottomRef} style={{ overflowY: 'hidden' }}>
+                <div className="grid grid-cols-2 gap-10">
+  {/* First grid */}
+  <div className="flex justify-center items-center">
+    <img className="w-80 md:w-96 lg:w-104 xl:w-120 h-80 md:h-96 lg:h-104 xl:h-120 rounded-md" src={bgImg} alt="Romantic"/>
+  </div>
+  <div className="flex flex-col justify-center items-center text-center md:pr-5 lg:pr-0 xl:pr-0 md:text-left lg:text-left xl:text-left md:pl-0 lg:pl-0 xl:pl-0">
+    <span style={{ fontFamily: 'satisfy' }} className="text-yellow-500 text-3xl md:text-4xl lg:text-5xl xl:text-6xl">Romantic</span>
+    <span style={{ fontFamily: 'oswald' }} className="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl">Restaurant</span>
+    <p className="text-gray-300 text-sm md:text-base lg:text-lg xl:text-xl mt-2 md:mt-5 lg:mt-7 xl:mt-10">
+      Fusce iaculis, quam quis volutpat cursus, tellus quam varius eros, in euismod lorem nisl in ante. Maecenas imperdiet vulputate dui sit amet vestibulum. Nulla quis suscipit nisl.
+    </p>
+  </div>
+
+  {/* Second grid */}
+  <div className="flex flex-col justify-center items-center text-center md:pl-5 lg:pl-0 xl:pl-0">
+    <span style={{ fontFamily: 'satisfy' }} className="text-yellow-500 text-3xl md:text-4xl lg:text-5xl xl:text-6xl ">Delicious</span>
+    <span style={{ fontFamily: 'oswald' }} className="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl">Recipes</span>
+    <p className="text-gray-300 text-sm md:text-base lg:text-lg xl:text-xl mt-2 md:mt-5 lg:mt-7 xl:mt-10">
+      Fusce iaculis, quam quis volutpat cursus, tellus quam varius eros, in euismod lorem nisl in ante. Maecenas imperdiet vulputate dui sit amet vestibulum. Nulla quis suscipit nisl.
+    </p>
+  </div>
+  <div className="flex justify-center items-center">
+    <img className="w-80 md:w-96 lg:w-104 xl:w-120 h-80 md:h-96 lg:h-104 xl:h-120 rounded-md" src={bgImg} alt="Delicious"/>
+  </div>
+</div>
+
         </div>
       </div>
     </>
@@ -124,4 +118,3 @@ const App = () => {
 };
 
 export default App;
->>>>>>> f8250c9 (Login, signup and about page commit)

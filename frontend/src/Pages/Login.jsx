@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const Login = () => {
-  return (
-    <div>Login</div>
-  )
-}
-
-export default Login
-=======
 import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
@@ -142,4 +131,3 @@ const Login = () => {
 };
 
 export default Login;
->>>>>>> f8250c9 (Login, signup and about page commit)

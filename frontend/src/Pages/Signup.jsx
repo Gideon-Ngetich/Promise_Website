@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
-import { AiFillTwitterCircle, AiFillInstagram, AiFillFacebook } from "react-icons/ai";
+import { AiFillTwitterCircle,AiFillMail , AiFillFacebook } from "react-icons/ai";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -100,7 +100,7 @@ const Signup = () => {
 
         <div className="mt-2 flex justify-center">
           <AiFillTwitterCircle className="text-blue-500 text-2xl mr-4 cursor-pointer" />
-          <AiFillInstagram className="text-pink-500 text-2xl mr-4 cursor-pointer" />
+          <AiFillMail className="text-blue-500 text-2xl mr-4 cursor-pointer" />
           <AiFillFacebook className="text-blue-600 text-2xl cursor-pointer" />
         
             {/* Additional Content */}
