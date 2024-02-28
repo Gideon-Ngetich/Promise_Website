@@ -7,6 +7,7 @@ import axios from 'axios'
 import Loader from '../Components/Loader.jsx';
 import { useSnackbar } from 'notistack';
 
+const backendURL = process.env.BACKEND_URL || 'https://promise-website.onrender.com'
 
 const Menu = () => {
 
@@ -20,7 +21,7 @@ const Menu = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:5500/api/food-category')
+    axios.get(`${backendURL}/api/food-category`)
       .then(response => {
         const filteredCategories = response.data.filter(category => category.name !== 'Lunch');
         const lunchCategory = response.data.filter(category => category.name === 'Lunch');
