@@ -1,10 +1,11 @@
-import { React, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TopNav from '../Components/Navbar'
 import bgImage from '../assets/image-1.jpg'
 import Footer from '../Components/Footer.jsx'
 import { FaCartPlus } from "react-icons/fa";
 import axios from 'axios'
 import Loader from '../Components/Loader.jsx';
+import { useSnackbar } from 'notistack';
 
 
 const Menu = () => {
@@ -12,15 +13,10 @@ const Menu = () => {
   const [categories, setCategories] = useState([]);
   const [lunch, setLunch] = useState([]);
   const [dinner, setDinner] = useState([])
-
   const [loading, setLoading] = useState(true);
+  const {enqueSnackbar} = useSnackbar();
 
-    useEffect(() => {
-        setTimeout(() => setLoading(false), 3300)
-    }, [])
-    if(loading){
-       return <Loader />
-    }
+  // 
 
 
   useEffect(() => {
@@ -34,9 +30,17 @@ const Menu = () => {
         setDinner(dinnerCategory);
       })
       .catch(error => {
+        enqueSnackbar('Error fetching categories', {variant: 'error'})
         console.error('Error fetching categories:', error);
       });
   }, []);
+
+  useEffect(() => {
+      setTimeout(() => setLoading(false), 3300)
+    }, [])
+    if (loading) {
+      return <Loader />
+    }
 
   // useEffect(() => {
   //   axios.get('http://localhost:5500/api/food-category')
@@ -52,7 +56,7 @@ const Menu = () => {
   return (
     <>
       <TopNav />
-      <div className='bg-cover h-96 w-screen  flex justify-center items-center' style={{ backgroundImage: `url(${langingBackground})` }}>
+      <div className='bg-cover bg-fixed h-96 w-screen  flex justify-center items-center' style={{ backgroundImage: `url(${langingBackground})` }}>
         <p className='text-7xl font-extrabold text-white'>Savor Menu</p>
       </div>
 
@@ -77,7 +81,7 @@ const Menu = () => {
 
       </div>
 
-      <div className='bg-cover h-96 w-full flex justify-center items-center' style={{ backgroundImage: `url(${langingBackground})` }}>
+      <div className='bg-cover bg-fixed h-96 w-full flex justify-center items-center' style={{ backgroundImage: `url(${langingBackground})` }}>
         <p className='text-7xl font-extrabold text-white'>Lunch</p>
       </div>
 
@@ -109,7 +113,7 @@ const Menu = () => {
         ))}
       </div>
 
-      <div className='bg-cover h-96 w-full flex justify-center items-center' style={{ backgroundImage: `url(${langingBackground})` }}>
+      <div className='bg-cover bg-fixed h-96 w-full flex justify-center items-center' style={{ backgroundImage: `url(${langingBackground})` }}>
         <p className='text-7xl font-extrabold text-white'>Dinner</p>
       </div>
 

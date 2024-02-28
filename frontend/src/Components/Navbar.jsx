@@ -34,6 +34,7 @@ function TopNav() {
         <Navbar.Link href="/">
           Home
         </Navbar.Link>
+        <Navbar.Link href="/menu">Menu</Navbar.Link>
         <Navbar.Link href="/about">About</Navbar.Link>
         <Navbar.Link href="/reservation">Reservation</Navbar.Link>
         <Navbar.Link href="/gallery">Gallery</Navbar.Link>

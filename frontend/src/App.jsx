@@ -7,6 +7,7 @@ import About from './Pages/About'
 import Reservation from './Pages/Reservation'
 import Contacts from './Pages/Contacts'
 import Signup from './Pages/Signup'
+import Gallery from './Pages/Gallery'
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
         <Route path='/login' Component={Login}/>
         <Route path='/signup' Component={Signup}/>
         <Route path='/about' Component={About} />
+        <Route path='/gallery' Component={Gallery}/>
         <Route path='/menu' Component={Menu}/>
         <Route path='/reservation' Component={Reservation}/>
         <Route path='/contacts' Component={Contacts}/>

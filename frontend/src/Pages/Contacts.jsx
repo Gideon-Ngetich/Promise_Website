@@ -20,7 +20,7 @@ const Contacts = () => {
   return (
     <>
       <TopNav />
-      <div className='bg-cover h-96 w-screen flex justify-center items-center overflow-hidden' style={{ backgroundImage: `url(${langingBackground})` }}>
+      <div className='bg-cover bg-fixed h-96 w-screen flex justify-center items-center overflow-hidden' style={{ backgroundImage: `url(${langingBackground})` }}>
         <p className='text-5xl lg:text-6xl font-extrabold text-white'>CONTACT</p>
       </div>
 

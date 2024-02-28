@@ -198,9 +198,11 @@ const Home = () => {
                     <h2 style={{ fontFamily: 'Courgette' }} className='text-5xl text-yellow-500'>Savor</h2>
                     <h1 className='text-4xl text-white font-bold tracking-2'>OUR VIDEO</h1>
                 </span>
-                <span className='w-full h-full lg:h-[800px]  flex justify-center overflow-hidden'>
-                    <video src={video1} controls ></video>
-                </span>
+                <div className="flex justify-center items-center">
+                    <div className="w-[800px] h-full lg:h-[800px] flex justify-center overflow-hidden">
+                        <video src={video1} controls className="w-full h-full object-cover"></video>
+                    </div>
+                </div>
             </div>
 
             <div className='h-auto'>
