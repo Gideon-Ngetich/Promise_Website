@@ -19,7 +19,7 @@ const JWT_SECRET_KEY = cryptoRandomString({length: 32, type: 'base64'});
 // const wss = new WebSocket.Server({server})
 
 //middleware
-app.use(cors({credentials:true, origin:'http://localhost:5173'}));
+app.use(cors({credentials:true, origin:'https://promise-website.onrender.com'}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());

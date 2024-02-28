@@ -6,8 +6,13 @@ import { FaCartPlus } from "react-icons/fa";
 import axios from 'axios'
 import Loader from '../Components/Loader.jsx';
 import { useSnackbar } from 'notistack';
+// import dotenv from 'dotenv'
+// dotenv.config();
 
-const backendURL = process.env.BACKEND_URL || 'https://promise-website.onrender.com'
+
+// const variable = process.env
+
+// const backendURL = process.env.BACKEND_URL || 'https://promise-website.onrender.com/'
 
 const Menu = () => {
 
@@ -17,11 +22,8 @@ const Menu = () => {
   const [loading, setLoading] = useState(true);
   const {enqueSnackbar} = useSnackbar();
 
-  // 
-
-
   useEffect(() => {
-    axios.get(`${backendURL}/api/food-category`)
+    axios.get('https://promise-website.onrender.com/api/food-category')
       .then(response => {
         const filteredCategories = response.data.filter(category => category.name !== 'Lunch');
         const lunchCategory = response.data.filter(category => category.name === 'Lunch');

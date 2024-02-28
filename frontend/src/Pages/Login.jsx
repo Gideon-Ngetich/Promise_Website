@@ -41,7 +41,7 @@ const Login = () => {
     e.preventDefault();
 
     try{
-      const response = await axios.post('http://localhost:5500/api/login', {email, password}, {withCredentials:true});
+      const response = await axios.post('https://promise-website.onrender.com/api/login', {email, password}, {withCredentials:true});
       console.log("Login successful");
       enqueueSnackbar('Login Successful', {variant: 'success'})
       console.log(response.data);
